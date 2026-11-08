@@ -1,0 +1,33 @@
+name: SupremeIoniq6Logger
+options:
+  bundleIdPrefix: com.supreme
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+
+targets:
+  SupremeIoniq6Logger:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.supreme.ioniq6logger
+        PRODUCT_NAME: SupremeIoniq6Logger
+        SWIFT_VERSION: "5.0"
+        IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: "Supreme Ioniq 6 Logger"
+        INFOPLIST_KEY_NSCameraUsageDescription: "Camera access is not currently used."
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Location is used to record your trip route, distance, speed and places."
+        INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription: "Allow location access while using other apps so an active trip can continue to be recorded."
+        INFOPLIST_KEY_NSLocationAlwaysUsageDescription: "Allow location access in the background during an active trip."
+        INFOPLIST_KEY_NSLocationUsageDescription: "Location is used to record your trip."
+        INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription: "Bluetooth will be used to connect to your vehicle's OBD2 adapter in a future version."
+        INFOPLIST_KEY_UIBackgroundModes: "location"
+        INFOPLIST_KEY_UIUserInterfaceStyle: "Dark"
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_EMIT_LOC_STRINGS: YES

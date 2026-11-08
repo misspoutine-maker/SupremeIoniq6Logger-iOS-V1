@@ -1,0 +1,29 @@
+workflows:
+  ios-validation:
+    name: Supreme Ioniq 6 Logger - iOS build validation
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    environment:
+      vars:
+        XCODE_PROJECT: "SupremeIoniq6Logger.xcodeproj"
+        XCODE_SCHEME: "SupremeIoniq6Logger"
+      xcode: latest
+    scripts:
+      - name: Install XcodeGen
+        script: |
+          brew install xcodegen
+      - name: Generate Xcode project
+        script: |
+          xcodegen generate
+      - name: Build for iPhone simulator
+        script: |
+          xcodebuild \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+    artifacts:
+      - build/ios/Build/**/*.app
